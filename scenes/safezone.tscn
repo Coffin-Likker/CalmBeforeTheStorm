@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://b68um4cq86knr"]
+
+[ext_resource type="Texture2D" uid="uid://d3g7f0ykg6pri" path="res://assets/rockStone_moss3.png" id="1_7k2l8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m2wa0"]
+radius = 8.32788
+
+[node name="Safezone" type="Area2D"]
+scale = Vector2(0.64255, 0.676909)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.556298, 8)
+scale = Vector2(0.591755, 0.492199)
+texture = ExtResource("1_7k2l8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.87859, -1.73786)
+shape = SubResource("CircleShape2D_m2wa0")

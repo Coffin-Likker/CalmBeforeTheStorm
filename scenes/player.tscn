@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dprh0a4mvqopg"]
+
+[ext_resource type="Texture2D" uid="uid://cepui32jnujv3" path="res://assets/ship (1).png" id="1_2toud"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j3uub"]
+height = 40.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(-1.90735e-06, 9.53674e-07)
+scale = Vector2(0.351977, 0.358108)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.409091, 0.340708)
+texture = ExtResource("1_2toud")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_j3uub")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+scale = Vector2(1.00452, 0.989709)
+zoom = Vector2(2.5, 2.5)

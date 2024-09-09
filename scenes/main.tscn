@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://65s2elt3qqqh"]
+
+[ext_resource type="PackedScene" uid="uid://dprh0a4mvqopg" path="res://scenes/player.tscn" id="1_pr84w"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="2_qts3f"]
+[ext_resource type="PackedScene" uid="uid://clihwhvb2tpm3" path="res://scenes/game_manger.tscn" id="3_v1ng7"]
+[ext_resource type="Script" path="res://scripts/safezone.gd" id="4_21x63"]
+[ext_resource type="Script" path="res://scripts/fish.gd" id="4_kd64y"]
+[ext_resource type="PackedScene" uid="uid://8i552631oebw" path="res://scenes/hud.tscn" id="6_lk3ns"]
+
+[node name="Main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visibility_layer = 2
+z_index = -1
+offset_right = 1153.0
+offset_bottom = 646.0
+color = Color(0.0117647, 0.819608, 1, 1)
+
+[node name="GameManger" parent="." instance=ExtResource("3_v1ng7")]
+
+[node name="Safezone" parent="GameManger" index="0"]
+position = Vector2(688, 340)
+script = ExtResource("4_21x63")
+
+[node name="Fish" parent="GameManger" index="1"]
+position = Vector2(610, 283)
+script = ExtResource("4_kd64y")
+
+[node name="Player" parent="." instance=ExtResource("1_pr84w")]
+z_index = 1
+position = Vector2(575, 322)
+script = ExtResource("2_qts3f")
+
+[node name="HUD" parent="." instance=ExtResource("6_lk3ns")]
+
+[editable path="GameManger"]
+[editable path="Player"]
