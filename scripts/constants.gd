@@ -26,4 +26,4 @@ func update_score_display():
 
 func update_time_display():
 	if timer_label:
-		timer_label.text = str(ceil(time_left))
+		timer_label.text = str(abs(ceil(time_left)))
