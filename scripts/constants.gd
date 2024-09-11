@@ -9,7 +9,7 @@ var player_in_safezone: bool = false
 var current_state: GameState = GameState.PLAYING
 
 # Timer variables
-var time_left: float = 10.0
+var time_left: float = 30.0
 var timer_running: bool = false
 
 # Level generation variables
@@ -17,6 +17,15 @@ var map_size: Vector2 = Vector2(1153, 646)
 var min_distance_between_objects: float = 30.0
 var num_fish: int = 10
 var num_safezones: int = 4
+
+# Player movement variables
+var player_max_speed: float = 200.0
+var player_half_speed: float = 100.0
+var player_acceleration: float = 50.0
+var player_deceleration: float = 50.0
+var player_rotation_speed: float = 1.0
+var player_friction: float = 30.0
+var player_speed_levels: int = 2
 
 # Node references 
 var score_label: RichTextLabel
