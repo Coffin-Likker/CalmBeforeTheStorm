@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://65s2elt3qqqh"]
+[gd_scene load_steps=5 format=3 uid="uid://65s2elt3qqqh"]
 
 [ext_resource type="PackedScene" uid="uid://dprh0a4mvqopg" path="res://scenes/player.tscn" id="1_pr84w"]
 [ext_resource type="PackedScene" uid="uid://clihwhvb2tpm3" path="res://scenes/game_manager.tscn" id="3_v1ng7"]
+[ext_resource type="PackedScene" uid="uid://bks5mx6jnrnrs" path="res://scenes/map_limits.tscn" id="4_6ldun"]
 [ext_resource type="PackedScene" uid="uid://8i552631oebw" path="res://scenes/hud.tscn" id="6_lk3ns"]
 
 [node name="Main" type="Node2D"]
@@ -20,6 +21,25 @@ z_index = 1
 position = Vector2(575, 322)
 
 [node name="HUD" parent="." instance=ExtResource("6_lk3ns")]
+
+[node name="Limits" type="Node" parent="."]
+
+[node name="MapLimits" parent="Limits" instance=ExtResource("4_6ldun")]
+position = Vector2(578, -9)
+scale = Vector2(57.7761, 0.989938)
+
+[node name="MapLimits3" parent="Limits" instance=ExtResource("4_6ldun")]
+position = Vector2(-9.00003, 419)
+rotation = 1.57057
+scale = Vector2(57.7761, 0.989938)
+
+[node name="MapLimits4" parent="Limits" instance=ExtResource("4_6ldun")]
+position = Vector2(571, 655)
+scale = Vector2(58.5361, 0.989938)
+
+[node name="MapLimits2" parent="Limits" instance=ExtResource("4_6ldun")]
+position = Vector2(1162, 361)
+scale = Vector2(1, 46.48)
 
 [editable path="GameManager"]
 [editable path="Player"]

@@ -8,7 +8,7 @@ height = 40.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 position = Vector2(-1.90735e-06, 9.53674e-07)
-scale = Vector2(0.351977, 0.358108)
+scale = Vector2(0.688102, 0.877039)
 script = ExtResource("1_3gxhr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,6 +19,6 @@ texture = ExtResource("1_2toud")
 shape = SubResource("CapsuleShape2D_j3uub")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-scale = Vector2(1.00452, 0.989709)
+scale = Vector2(-1.48287, -1.6887)
 enabled = false
 zoom = Vector2(2.5, 2.5)
