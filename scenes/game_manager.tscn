@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://clihwhvb2tpm3"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_8j0q5"]
+[ext_resource type="PackedScene" uid="uid://c5b4cn2ymgvpy" path="res://scenes/level_generator.tscn" id="4_qoa7p"]
+
+[node name="GameManager" type="Node"]
+script = ExtResource("1_8j0q5")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="LevelGenerator" parent="." instance=ExtResource("4_qoa7p")]
+
+[connection signal="level_generated" from="LevelGenerator" to="." method="_on_level_generated"]

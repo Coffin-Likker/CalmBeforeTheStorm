@@ -1,22 +1,33 @@
 extends Node
 
+@onready var level_generator = $LevelGenerator
+
 func _ready():
-	for fish in get_tree().get_nodes_in_group("fish"):
-		fish.connect("fish_entered", Callable(self, "_on_fish_entered"))
-	
-	for safezone in get_tree().get_nodes_in_group("safezone"):
-		safezone.connect("safezone_entered", Callable(self, "_on_safezone_entered"))
-		safezone.connect("safezone_exited", Callable(self, "_on_safezone_exited"))
-	
 	Constants.score_label = $"../HUD/ScoreLabel"
 	Constants.timer_label = $"../HUD/TimeLabel"
+	Constants.level_generator = level_generator
+	start_game()
 
+func start_game():
+	level_generator.generate_level()
+
+func _on_level_generated():
+	connect_objects()
 	start_timer()
-	print("Timer started")
+	print("Level generated and timer started")
+
+func connect_objects():
+	for fish in get_tree().get_nodes_in_group("fish"):
+		if not fish.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
+			fish.connect("fish_entered", Callable(self, "_on_fish_entered"))
 	
+	for safezone in get_tree().get_nodes_in_group("safezone"):
+		if not safezone.is_connected("safezone_entered", Callable(self, "_on_safezone_entered")):
+			safezone.connect("safezone_entered", Callable(self, "_on_safezone_entered"))
+		if not safezone.is_connected("safezone_exited", Callable(self, "_on_safezone_exited")):
+			safezone.connect("safezone_exited", Callable(self, "_on_safezone_exited"))
 
 func start_timer():
-	Constants.time_left = 10.0
 	Constants.timer_running = true
 
 func _process(delta):
@@ -25,7 +36,6 @@ func _process(delta):
 		Constants.update_time_display()
 		
 		if Constants.time_left <= 0:
-			Constants.timer_running = false
 			_on_timer_timeout()
 
 func _on_safezone_entered():
@@ -47,11 +57,12 @@ func _on_timer_timeout():
 	print("Timer timeout")
 	if not Constants.player_in_safezone and Constants.current_state != Constants.GameState.GAME_OVER:
 		Constants.current_state = Constants.GameState.GAME_OVER
+		Constants.timer_running = false
 		print("You died!")
 	else:
+		Constants.time_left = 10.0
 		print("Player is safe")
-
 
 func reset_game():
 	Constants.reset_game()
-	start_timer()
+	start_game()
