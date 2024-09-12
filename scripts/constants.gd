@@ -21,10 +21,10 @@ var num_safezones: int = 4
 # Player movement variables
 var player_max_speed: float = 200.0
 var player_half_speed: float = 100.0
-var player_acceleration: float = 50.0
-var player_deceleration: float = 50.0
+var player_acceleration: float = 90.0
+var player_deceleration: float = 60.0
 var player_rotation_speed: float = 1.0
-var player_friction: float = 30.0
+var player_friction: float = 20.0
 var player_speed_levels: int = 2
 
 # Node references 

@@ -26,10 +26,10 @@ func handle_speed_input():
 	var deceleration_input = Input.get_action_strength("ui_down")
 	
 	if acceleration_input > 0:
-		if Input.is_action_just_pressed("ui_up"):
-			target_speed = Constants.player_half_speed
-		elif Input.is_action_just_pressed("ui_up") and target_speed == Constants.player_half_speed:
+		if Input.is_action_just_pressed("ui_up") and target_speed == Constants.player_half_speed:
 			target_speed = Constants.player_max_speed
+		elif Input.is_action_just_pressed("ui_up") and  target_speed < Constants.player_half_speed:
+			target_speed = Constants.player_half_speed
 	elif deceleration_input > 0:
 		if Input.is_action_just_pressed("ui_down"):
 			target_speed = max(target_speed - Constants.player_half_speed, 0)
