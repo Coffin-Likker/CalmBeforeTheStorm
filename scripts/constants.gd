@@ -17,6 +17,8 @@ var min_distance_between_objects: float = 100.0
 var num_fish: int = 6
 var num_special_fish: int = 4
 var num_safezones: int = 4
+const BORDER_BUFFER = 15  # Buffer zone from map edges
+
 
 # Player movement variables
 var player_max_speed: float = 200.0

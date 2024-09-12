@@ -3,7 +3,6 @@ extends Area2D
 signal fish_entered 
 
 func _ready():
-	add_to_group("fish")
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body):
