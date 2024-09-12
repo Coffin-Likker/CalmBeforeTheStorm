@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cy3smoix7ik33"]
+[gd_scene load_steps=4 format=3 uid="uid://cy3smoix7ik33"]
 
 [ext_resource type="PackedScene" uid="uid://cfsdfk7vtlyoq" path="res://scenes/cloud_tilemap.tscn" id="1_e2ubm"]
+[ext_resource type="Script" path="res://scripts/death_cloud.gd" id="1_kcb7e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2si0f"]
 size = Vector2(1056, 929)
 
-[node name="death_cloud" type="Node2D"]
+[node name="DeathCloud" type="Node2D"]
+script = ExtResource("1_kcb7e")
 
 [node name="Cloud_tilemap" parent="." instance=ExtResource("1_e2ubm")]
 

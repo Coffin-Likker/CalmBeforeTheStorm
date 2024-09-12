@@ -9,7 +9,7 @@ var player_in_safezone: bool = false
 var current_state: GameState = GameState.PLAYING
 
 # Timer variables
-var time_left: float = 30.0
+var time_left: float = 5.0
 var timer_running: bool = false
 
 # Level generation variables

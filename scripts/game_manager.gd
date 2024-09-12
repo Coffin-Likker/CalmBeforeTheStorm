@@ -1,6 +1,7 @@
 extends Node
 
 @onready var level_generator = $LevelGenerator
+@onready var death_cloud = $'../DeathCloud'
 
 func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
@@ -56,7 +57,8 @@ func _on_fish_entered():
 func _on_timer_timeout():
 	print("Timer timeout")
 	if not Constants.player_in_safezone and Constants.current_state != Constants.GameState.GAME_OVER:
-		Constants.current_state = Constants.GameState.GAME_OVER
+		#Constants.current_state = Constants.GameState.GAME_OVER
+		death_cloud.start_cloud_movement()
 		Constants.timer_running = false
 		print("You died!")
 	else:
