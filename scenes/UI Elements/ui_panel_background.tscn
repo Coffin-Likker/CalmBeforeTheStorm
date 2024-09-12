@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56ri7wtjf57r"]
+
+[ext_resource type="Texture2D" uid="uid://c03sm3lo01il8" path="res://assets/tilemaps/large_tiles_tilemap_packed.png" id="1_23srp"]
+
+[node name="UIPanelBackground" type="NinePatchRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_23srp")
+region_rect = Rect2(0, 33, 31, 31)

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhcwjvbd3db6g"]
+
+[ext_resource type="Texture2D" uid="uid://c03sm3lo01il8" path="res://assets/tilemaps/large_tiles_tilemap_packed.png" id="1_pksa8"]
+
+[node name="WarningPanelBackground" type="NinePatchRect"]
+offset_right = 132.0
+offset_bottom = 39.0
+texture = ExtResource("1_pksa8")
+region_rect = Rect2(96, 65, 32, 31)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11

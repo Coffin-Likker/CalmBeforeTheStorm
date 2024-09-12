@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnrmv2w2d20vn"]
+
+[ext_resource type="Texture2D" uid="uid://c03sm3lo01il8" path="res://assets/tilemaps/large_tiles_tilemap_packed.png" id="1_g0b25"]
+
+[node name="RedBanner" type="NinePatchRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(3, 1)
+texture = ExtResource("1_g0b25")
+region_rect = Rect2(129, 128, 94, 32)

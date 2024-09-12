@@ -1,19 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://8i552631oebw"]
+[gd_scene load_steps=3 format=3 uid="uid://8i552631oebw"]
 
 [ext_resource type="FontFile" uid="uid://bk6liykimgi1b" path="res://assets/fonts/SeaweedScript-Regular.ttf" id="1_jwivp"]
+[ext_resource type="PackedScene" uid="uid://bmhrhbcrx5aq4" path="res://scenes/UI Elements/warning_panel.tscn" id="2_h6wkt"]
 
 [node name="HUD" type="CanvasLayer"]
 
-[node name="ScoreLabel" type="RichTextLabel" parent="."]
-offset_left = 17.0
-offset_top = -1.0
-offset_right = 543.0
-offset_bottom = 89.0
-theme_override_fonts/normal_font = ExtResource("1_jwivp")
-theme_override_font_sizes/normal_font_size = 64
-text = "Score: 0"
+[node name="Node" type="Node" parent="."]
 
-[node name="TimeLabel" type="RichTextLabel" parent="."]
+[node name="TimeLabel" type="RichTextLabel" parent="Node"]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -23,3 +17,16 @@ grow_horizontal = 0
 theme_override_fonts/normal_font = ExtResource("1_jwivp")
 theme_override_font_sizes/normal_font_size = 64
 text = "10"
+
+[node name="ScoreLabel" type="RichTextLabel" parent="Node"]
+offset_left = 17.0
+offset_top = -1.0
+offset_right = 543.0
+offset_bottom = 89.0
+theme_override_fonts/normal_font = ExtResource("1_jwivp")
+theme_override_font_sizes/normal_font_size = 64
+text = "Score: 0"
+
+[node name="WarningPanel" parent="." instance=ExtResource("2_h6wkt")]
+offset_top = 1.0
+offset_bottom = 1.0
