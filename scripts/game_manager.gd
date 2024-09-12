@@ -1,13 +1,13 @@
 extends Node
 
-@onready var level_generator = $LevelGenerator
+@onready var level_generator = $'../LevelGenerator'
 @onready var death_cloud = $'../DeathCloud'
 
 
 func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
 	Constants.timer_label = $"../HUD/TimeLabel"
-	Constants.level_generator = level_generator
+	level_generator.connect("level_generated", Callable(self, "_on_level_generated"))
 	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
 	start_game()
 
@@ -23,7 +23,11 @@ func connect_objects():
 	for fish in get_tree().get_nodes_in_group("fish"):
 		if not fish.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
 			fish.connect("fish_entered", Callable(self, "_on_fish_entered"))
-	
+
+	for special_fish in get_tree().get_nodes_in_group("special_fish"):
+		if not special_fish.is_connected("special_fish_entered", Callable(self, "_on_special_fish_entered")):
+			special_fish.connect("special_fish_entered", Callable(self, "_on_special_fish_entered"))
+
 	for safezone in get_tree().get_nodes_in_group("safezone"):
 		if not safezone.is_connected("safezone_entered", Callable(self, "_on_safezone_entered")):
 			safezone.connect("safezone_entered", Callable(self, "_on_safezone_entered"))
@@ -58,6 +62,11 @@ func _on_fish_entered():
 	Constants.game_score += 1
 	Constants.update_score_display()
 	print("Fish collected - Score: ", Constants.game_score)
+
+func _on_special_fish_entered():
+	Constants.game_score += 3
+	Constants.update_score_display()
+	print("Special Fish collected - Score: ", Constants.game_score)
 
 func _on_timer_timeout():
 	print("Timer timeout")

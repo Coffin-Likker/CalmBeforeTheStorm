@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://ct2ah28t7de1w"]
+[gd_scene load_steps=4 format=3 uid="uid://ct2ah28t7de1w"]
 
+[ext_resource type="Script" path="res://scripts/special_fish.gd" id="1_3bwnq"]
 [ext_resource type="Texture2D" uid="uid://bforgop8icrtm" path="res://assets/fishTile_101.png" id="1_cial8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pm53n"]
@@ -7,6 +8,7 @@ radius = 26.0
 
 [node name="SpecialFish" type="Area2D"]
 scale = Vector2(0.5, 0.5)
+script = ExtResource("1_3bwnq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-4, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://65s2elt3qqqh"]
+[gd_scene load_steps=10 format=4 uid="uid://boh062hvvrngq"]
 
 [ext_resource type="PackedScene" uid="uid://dprh0a4mvqopg" path="res://scenes/player.tscn" id="1_pr84w"]
 [ext_resource type="PackedScene" uid="uid://clihwhvb2tpm3" path="res://scenes/game_manager.tscn" id="3_v1ng7"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cyrcfkg1sjgxt" path="res://assets/tilemaps/isometric_tiles.png" id="5_ebu8m"]
 [ext_resource type="PackedScene" uid="uid://8i552631oebw" path="res://scenes/hud.tscn" id="6_lk3ns"]
 [ext_resource type="PackedScene" uid="uid://cy3smoix7ik33" path="res://scenes/death_cloud.tscn" id="6_qxlp8"]
+[ext_resource type="PackedScene" uid="uid://c5b4cn2ymgvpy" path="res://scenes/level_generator.tscn" id="7_5q7pe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_npcw0"]
 texture = ExtResource("5_ebu8m")
@@ -183,6 +184,8 @@ tile_set = SubResource("TileSet_5fphv")
 [node name="DeathCloud" parent="." instance=ExtResource("6_qxlp8")]
 z_index = 6
 position = Vector2(-1316, -53)
+
+[node name="LevelGenerator" parent="." instance=ExtResource("7_5q7pe")]
 
 [editable path="GameManager"]
 [editable path="Player"]
