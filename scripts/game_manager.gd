@@ -1,13 +1,13 @@
 extends Node
 
-@onready var level_generator = $LevelGenerator
+@onready var level_generator = $'../LevelGenerator'
 @onready var death_cloud = $'../DeathCloud'
 
 
 func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
 	Constants.timer_label = $"../HUD/TimeLabel"
-	Constants.level_generator = level_generator
+	level_generator.connect("level_generated", Callable(self, "_on_level_generated"))
 	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
 	start_game()
 

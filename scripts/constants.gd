@@ -13,8 +13,8 @@ var timer_running: bool = false
 
 # Level generation variables
 var map_size: Vector2 = Vector2(1153, 646)
-var min_distance_between_objects: float = 30.0
-var num_fish: int = 16
+var min_distance_between_objects: float = 100.0
+var num_fish: int = 6
 var num_special_fish: int = 4
 var num_safezones: int = 4
 
@@ -31,6 +31,10 @@ var player_speed_levels: int = 2
 var score_label: RichTextLabel
 var timer_label: RichTextLabel
 var level_generator: Node
+var fish_scene= load("res://scenes/fish.tscn")
+var special_fish_scene= load("res://scenes/special_fish.tscn")
+var safezone_scene = load("res://scenes/safezone.tscn")
+
 
 # Game over conditions 
 var required_score: int = 20
