@@ -14,7 +14,8 @@ var timer_running: bool = false
 # Level generation variables
 var map_size: Vector2 = Vector2(1153, 646)
 var min_distance_between_objects: float = 30.0
-var num_fish: int = 10
+var num_fish: int = 16
+var num_special_fish: int = 4
 var num_safezones: int = 4
 
 # Player movement variables

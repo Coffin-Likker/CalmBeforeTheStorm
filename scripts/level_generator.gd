@@ -3,11 +3,13 @@ extends Node
 signal level_generated 
 
 var fish_scene: PackedScene
+var special_fish_scene: PackedScene
 var safezone_scene: PackedScene
 
 func _ready():
 	randomize()
 	fish_scene = load("res://scenes/fish.tscn")
+	special_fish_scene = load("res://scenes/special_fish.tscn")
 	safezone_scene = load("res://scenes/safezone.tscn")
 
 func generate_level():
@@ -26,6 +28,12 @@ func generate_level():
 		spawn_fish(position)
 		occupied_positions.append(position)
 		
+	# Generate fish
+	for i in range(Constants.num_special_fish):
+		var position = get_random_position(occupied_positions)
+		spawn_special_fish(position)
+		occupied_positions.append(position)
+
 	print("Level generation complete")
 	emit_signal("level_generated")
 
@@ -53,6 +61,13 @@ func spawn_fish(position: Vector2):
 	fish.position = position
 	add_child(fish)
 	print("Fish spawned at ", position)
+
+func spawn_special_fish(position: Vector2):
+	var special_fish = special_fish_scene.instantiate()
+	special_fish.set_script(load("res://scripts/special_fish.gd"))
+	special_fish.position = position
+	add_child(special_fish)
+	print("special_fish spawned at ", position)
 
 func spawn_safezone(position: Vector2):
 	var safezone = safezone_scene.instantiate()
