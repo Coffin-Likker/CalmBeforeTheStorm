@@ -148,14 +148,6 @@ z_index = 10
 position = Vector2(576, 326)
 zoom = Vector2(1.8, 1.8)
 
-[node name="ColorRect" type="ColorRect" parent="."]
-visible = false
-visibility_layer = 2
-z_index = -1
-offset_right = 1153.0
-offset_bottom = 646.0
-color = Color(0.0117647, 0.819608, 1, 1)
-
 [node name="GameManager" parent="." instance=ExtResource("3_v1ng7")]
 
 [node name="Player" parent="." instance=ExtResource("1_pr84w")]
