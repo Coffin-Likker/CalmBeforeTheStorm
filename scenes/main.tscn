@@ -190,8 +190,7 @@ tile_set = SubResource("TileSet_5fphv")
 
 [node name="DeathCloud" parent="." instance=ExtResource("6_qxlp8")]
 z_index = 6
-position = Vector2(-2142, -172)
-scale = Vector2(2, 2)
+position = Vector2(-1166, -81)
 
 [editable path="GameManager"]
 [editable path="Player"]

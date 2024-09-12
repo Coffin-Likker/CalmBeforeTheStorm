@@ -15,7 +15,7 @@ func _ready():
 	
 	# Calculate the cloud width
 	var used_rect = $Cloud_tilemap.get_used_rect()
-	cloud_width = used_rect.size.x * $Cloud_tilemap.tile_set.tile_size.x * 2
+	cloud_width = used_rect.size.x * $Cloud_tilemap.tile_set.tile_size.x
 	
 	# Connect to the timer timeout signal
 	var game_manager = get_node("/root/Main/GameManager")
@@ -24,9 +24,10 @@ func _ready():
 func _process(delta):
 	if is_moving:
 		position += move_direction * cloud_speed * delta
-		
+		print(position.x)
 		# Check if the cloud has covered the entire screen
 		if cloud_covers_screen():
+			print('STOP')
 			is_moving = false
 
 func start_cloud_movement():
@@ -38,16 +39,18 @@ func start_cloud_movement():
 	
 	if start_from_left:
 		position.x = -cloud_width
+		print(position.x)
 		move_direction = Vector2.RIGHT
 	else:
 		position.x = viewport_width
+		print(position.x)
 		move_direction = Vector2.LEFT
 	
 	# Set Y position to align the cloud vertically
-	position.y = 0
+	position.y = -10
 
 func cloud_covers_screen() -> bool:
 	if move_direction == Vector2.RIGHT:
-		return position.x + cloud_width >= viewport_width
+		return position.x + cloud_width >= viewport_width 
 	else:
 		return position.x <= 0
