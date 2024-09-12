@@ -33,15 +33,21 @@ func _process(delta):
 		if cloud_covers_screen():
 			is_moving = false
 
-func start_cloud_movement(direction):
+func start_cloud_movement():
 	visible = true
 	is_moving = true
-	move_direction = direction
+	#move_direction = direction
 	var start_from_left = randf() > 0.5
 	if start_from_left:
 		position.x = camera.get_screen_center_position().x - (screen_width / 2) - cloud_width
+		move_direction = Vector2.RIGHT
 	else:
 		position.x = camera.get_screen_center_position().x + (screen_width / 2)
+		move_direction = Vector2.LEFT
+	#if direction == Vector2.DOWN:
+		#position.y = camera.get_screen_center_position().y - (screen_height / 2) - cloud_height
+	#if direction == Vector2.UP:
+		#position.y = camera.get_screen_center_position().y + (screen_height / 2)
 	
 	position.y = -10
 
