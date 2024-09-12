@@ -3,6 +3,7 @@ extends Node
 @onready var level_generator = $LevelGenerator
 @onready var death_cloud = $'../DeathCloud'
 
+
 func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
 	Constants.timer_label = $"../HUD/TimeLabel"

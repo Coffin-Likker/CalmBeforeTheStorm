@@ -3,15 +3,23 @@ extends Node2D
 @export var cloud_speed = 100  # Adjust this value to change the cloud's speed
 var move_direction = Vector2.ZERO
 var is_moving = false
-var viewport_width = 0
+var screen_width = 0
 var cloud_width = 0
+var camera = Node2D
 
 func _ready():
 	# Hide the cloud initially
 	visible = false
 	
-	# Get the viewport width
-	viewport_width = get_viewport_rect().size.x
+
+	camera = get_node("../Camera2D")
+	if not camera:
+		push_error("Camera2D not found. Make sure it's at the same level as the death cloud in the scene hierarchy.")
+		return
+	
+	# Calculate the screen width based on the camera's zoom
+	var viewport_size = get_viewport_rect().size
+	screen_width = viewport_size.x / camera.zoom.x
 	
 	# Calculate the cloud width
 	var used_rect = $Cloud_tilemap.get_used_rect()
@@ -38,19 +46,18 @@ func start_cloud_movement():
 	var start_from_left = randf() > 0.5
 	
 	if start_from_left:
-		position.x = -cloud_width
-		print(position.x)
+		position.x = camera.get_screen_center_position().x - (screen_width / 2) - cloud_width
 		move_direction = Vector2.RIGHT
 	else:
-		position.x = viewport_width
-		print(position.x)
+		position.x = camera.get_screen_center_position().x + (screen_width / 2)
 		move_direction = Vector2.LEFT
 	
 	# Set Y position to align the cloud vertically
 	position.y = -10
 
 func cloud_covers_screen() -> bool:
+	var screen_center_x = camera.get_screen_center_position().x
 	if move_direction == Vector2.RIGHT:
-		return position.x + cloud_width >= viewport_width 
+		return position.x + cloud_width >= screen_center_x + (screen_width / 2) +10
 	else:
-		return position.x <= 0
+		return position.x <= screen_center_x - (screen_width / 2) -10
