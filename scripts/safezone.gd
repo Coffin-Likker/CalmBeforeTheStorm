@@ -1,6 +1,6 @@
 extends Area2D
 
-signal safezone_entered 
+signal safezone_entered
 signal safezone_exited
 
 func _ready():
