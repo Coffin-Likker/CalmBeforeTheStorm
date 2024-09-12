@@ -7,8 +7,8 @@ func _ready():
 	add_to_group("player")
 
 func _physics_process(delta):
-	#if Constants.current_state == Constants.GameState.GAME_OVER:
-		#return
+	if Constants.current_state == Constants.GameState.GAME_OVER:
+		return
 	
 	handle_rotation(delta)
 	handle_speed_input()

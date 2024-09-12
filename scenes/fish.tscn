@@ -1,17 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://cta6kfu5rvo2p"]
 
-[ext_resource type="Texture2D" uid="uid://bforgop8icrtm" path="res://assets/fishTile_101.png" id="1_8sfmq"]
+[ext_resource type="Texture2D" uid="uid://c07kmqr4w8lyt" path="res://assets/fishTile_081.png" id="1_0bmfs"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pm53n"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_eyqu2"]
 
 [node name="Fish" type="Area2D"]
-scale = Vector2(0.347839, 0.343567)
+scale = Vector2(1.46778, 1.81047)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 0)
 scale = Vector2(0.148438, 0.15625)
-texture = ExtResource("1_8sfmq")
+texture = ExtResource("1_0bmfs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-scale = Vector2(0.758074, 0.774215)
-shape = SubResource("CircleShape2D_pm53n")
+position = Vector2(-0.7, 0)
+scale = Vector2(0.815001, 0.508426)
+shape = SubResource("CircleShape2D_eyqu2")

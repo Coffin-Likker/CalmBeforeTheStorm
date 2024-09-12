@@ -8,6 +8,7 @@ func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
 	Constants.timer_label = $"../HUD/TimeLabel"
 	Constants.level_generator = level_generator
+	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
 	start_game()
 
 func start_game():
@@ -41,30 +42,39 @@ func _process(delta):
 			_on_timer_timeout()
 
 func _on_safezone_entered():
-	Constants.player_in_safezone = true
-	Constants.game_score = Constants.temp_score
-	Constants.update_score_display()
-	print("Safe zone entered - Game Score: ", Constants.game_score)
+	if Constants.game_score >= Constants.required_score:
+		Constants.player_in_safezone = true
+		Constants.update_score_display()
+		_game_over("Entered safezone with enough fish!")
+		print("Safe zone entered - Game Score: ", Constants.game_score)
+	else:
+		_game_over("Entered safezone without enough fish!")
 
 func _on_safezone_exited():
 	Constants.player_in_safezone = false
 	print("Safe zone exited")
 
 func _on_fish_entered():
-	Constants.temp_score += 1
+	Constants.game_score += 1
 	Constants.update_score_display()
-	print("Fish collected - Temporary Score: ", Constants.temp_score)
+	print("Fish collected - Score: ", Constants.game_score)
 
 func _on_timer_timeout():
 	print("Timer timeout")
-	if not Constants.player_in_safezone and Constants.current_state != Constants.GameState.GAME_OVER:
-		#Constants.current_state = Constants.GameState.GAME_OVER
-		death_cloud.start_cloud_movement()
-		Constants.timer_running = false
-		print("You died!")
+	death_cloud.start_cloud_movement()
+	Constants.timer_running = false
+
+func _on_cloud_hit_player():
+	_game_over("Hit by cloud!")
+
+func _game_over(reason):
+	Constants.current_state = Constants.GameState.GAME_OVER
+	Constants.timer_running = false
+	if  Constants.game_score >= Constants.required_score:
+		print("Game Over: " + "you Won")
 	else:
-		Constants.time_left = 10.0
-		print("Player is safe")
+		print("Game Over: " + reason)
+
 
 func reset_game():
 	Constants.reset_game()
