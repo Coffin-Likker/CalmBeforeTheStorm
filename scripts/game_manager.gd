@@ -42,7 +42,7 @@ func _process(delta):
 	if Constants.timer_running:
 		Constants.time_left -= delta
 		Constants.update_time_display()
-		if Constants.time_left <= 8:
+		if round(Constants.time_left) == 5:
 			warning_panel.trigger_panel(direction)
 		if Constants.time_left <= 0:
 			_on_timer_timeout()

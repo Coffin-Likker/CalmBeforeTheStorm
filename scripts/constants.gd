@@ -50,7 +50,7 @@ func reset_game():
 
 func update_score_display():
 	if score_label:
-		score_label.text = "Score: " + str(game_score)
+		score_label.text = "Score: " + str(game_score) + "/25"
 
 func update_time_display():
 	if timer_label:
