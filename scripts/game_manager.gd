@@ -2,7 +2,7 @@ extends Node
 
 @onready var level_generator = $'../LevelGenerator'
 @onready var death_cloud = $'../DeathCloud'
-
+var direction
 
 func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
@@ -10,6 +10,7 @@ func _ready():
 	level_generator.connect("level_generated", Callable(self, "_on_level_generated"))
 	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
 	start_game()
+	pick_direction()
 
 func start_game():
 	level_generator.generate_level()
@@ -67,7 +68,7 @@ func _on_special_fish_entered():
 
 func _on_timer_timeout():
 	print("Timer timeout")
-	death_cloud.start_cloud_movement()
+	death_cloud.start_cloud_movement(direction)
 	Constants.timer_running = false
 
 func _on_cloud_hit_player():
@@ -85,3 +86,7 @@ func _game_over(reason):
 func reset_game():
 	Constants.reset_game()
 	start_game()
+
+func pick_direction():
+	direction = [Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT].pick_random()
+	print('direction: ', direction)
