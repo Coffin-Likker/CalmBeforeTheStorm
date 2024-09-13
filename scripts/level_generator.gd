@@ -1,4 +1,4 @@
-extends Node
+extends Node2D
 
 signal level_generated 
 signal fish_spawned(fish_instance)
