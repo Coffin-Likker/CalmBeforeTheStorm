@@ -8,6 +8,7 @@ func _ready():
 	Constants.score_label = $"../HUD/ScoreLabel"
 	Constants.timer_label = $"../HUD/TimeLabel"
 	level_generator.connect("level_generated", Callable(self, "_on_level_generated"))
+	level_generator.connect("fish_spawned", Callable(self, "_on_fish_spawned"))
 	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
 	start_game()
 	pick_direction()
@@ -21,19 +22,17 @@ func _on_level_generated():
 	print("Level generated and timer started")
 
 func connect_objects():
-	print(get_tree())
-	print(get_tree().get_nodes_in_group("fish"))
-	for fish in get_tree().get_nodes_in_group("fish"):
+	for fish in get_tree().get_nodes_in_group("fish") + get_tree().get_nodes_in_group("special_fish"):
 		if not fish.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
 			fish.connect("fish_entered", Callable(self, "_on_fish_entered"))
-
-	for special_fish in get_tree().get_nodes_in_group("special_fish"):
-		if not special_fish.is_connected("special_fish_entered", Callable(self, "_on_special_fish_entered")):
-			special_fish.connect("special_fish_entered", Callable(self, "_on_special_fish_entered"))
 
 	for safezone in get_tree().get_nodes_in_group("safezone"):
 		if not safezone.is_connected("safezone_entered", Callable(self, "_on_safezone_entered")):
 			safezone.connect("safezone_entered", Callable(self, "_on_safezone_entered"))
+
+func _on_fish_spawned(fish_instance):
+	if not fish_instance.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
+		fish_instance.connect("fish_entered", Callable(self, "_on_fish_entered"))
 
 func start_timer():
 	Constants.timer_running = true
@@ -52,19 +51,24 @@ func _on_safezone_entered():
 		Constants.update_score_display()
 		_game_over("Entered safezone with enough fish!")
 	else:
-		_game_over("Entered safezone without enough fish!")
+		_game_over("Entered safezone without enough fish!")	
 
-
-
-func _on_fish_entered():
-	Constants.game_score += 1
+func _on_fish_entered(fish):
+	if fish.is_in_group("special_fish"):
+		Constants.game_score += 3
+		print("Special fish collected - Score +3")
+	else:
+		Constants.game_score += 1
+		print("Regular fish collected - Score +1")
+		
 	Constants.update_score_display()
-	print("Fish collected - Score: ", Constants.game_score)
-
-func _on_special_fish_entered():
-	Constants.game_score += 3
-	Constants.update_score_display()
-	print("Special Fish collected - Score: ", Constants.game_score)
+	print("Total Score: ", Constants.game_score)
+	
+	fish.queue_free()
+	call_deferred("spawn_new_fish")
+	
+func spawn_new_fish():
+	level_generator.spawn_random_fish()
 
 func _on_timer_timeout():
 	print("Timer timeout")

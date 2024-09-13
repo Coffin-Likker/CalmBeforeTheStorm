@@ -14,11 +14,11 @@ var timer_running: bool = false
 # Level generation variables
 var map_size: Vector2 = Vector2(1153, 646)
 var min_distance_between_objects: float = 100.0
-var num_fish: int = 6
-var num_special_fish: int = 4
+var total_fish_on_screen: int = 4  # Adjust this number as needed
+var special_fish_spawn_chance: float = 0.2  # 1/5 chance
 var num_safezones: int = 4
-const BORDER_BUFFER = 15  # Buffer zone from map edges
-
+const BORDER_BUFFER = 50  # Buffer zone from map edges
+const CENTER_SAFE_RADIUS = 50  # Radius of safe zone in the center
 
 # Player movement variables
 var player_max_speed: float = 200.0
@@ -40,7 +40,6 @@ var safezone_scene = load("res://scenes/safezone.tscn")
 
 # Game over conditions 
 var required_score: int = 20
-
 
 func reset_game():
 	game_score = 0

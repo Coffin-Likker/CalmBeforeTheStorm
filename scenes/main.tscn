@@ -157,6 +157,9 @@ position = Vector2(575, 322)
 
 [node name="HUD" parent="." instance=ExtResource("6_lk3ns")]
 
+[node name="ScoreLabel" parent="HUD" index="1"]
+offset_right = 239.0
+
 [node name="Limits" type="Node" parent="."]
 
 [node name="MapLimits" parent="Limits" instance=ExtResource("4_6ldun")]
@@ -190,3 +193,5 @@ position = Vector2(-1316, -53)
 [editable path="GameManager"]
 [editable path="Player"]
 [editable path="HUD"]
+[editable path="DeathCloud"]
+[editable path="LevelGenerator"]

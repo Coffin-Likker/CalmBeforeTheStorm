@@ -1,6 +1,6 @@
 extends Area2D
 
-signal special_fish_entered 
+signal fish_entered(fish)
 
 func _ready():
 	add_to_group("special_fish")
@@ -8,5 +8,5 @@ func _ready():
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		emit_signal("special_fish_entered")
-		queue_free()  
+		emit_signal("fish_entered", self)
+		queue_free()
