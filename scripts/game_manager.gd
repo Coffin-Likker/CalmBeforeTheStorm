@@ -2,6 +2,7 @@ extends Node
 
 @onready var level_generator = $'../LevelGenerator'
 @onready var death_cloud = $'../DeathCloud'
+@onready var warning_panel = $'../HUD/WarningPanel'
 var direction
 
 func _ready():
@@ -41,7 +42,8 @@ func _process(delta):
 	if Constants.timer_running:
 		Constants.time_left -= delta
 		Constants.update_time_display()
-		
+		if Constants.time_left <= 8:
+			warning_panel.trigger_panel(direction)
 		if Constants.time_left <= 0:
 			_on_timer_timeout()
 
