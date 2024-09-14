@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://c74p4nldu8k3o"]
 
-[ext_resource type="PackedScene" uid="uid://bh3dl5lbwjout" path="res://scenes/UI Elements/ui_panel_background.tscn" id="1_pqakr"]
-[ext_resource type="PackedScene" uid="uid://bnrmv2w2d20vn" path="res://scenes/UI Elements/red_banner.tscn" id="2_xd8ra"]
-[ext_resource type="PackedScene" uid="uid://dbto8uw5u2fst" path="res://scenes/UI Elements/button.tscn" id="3_qu7jp"]
-[ext_resource type="FontFile" uid="uid://dvy2g0nn1nf0p" path="res://assets/fonts/FFFFORWA.TTF" id="4_1acf6"]
+[ext_resource type="PackedScene" uid="uid://bh3dl5lbwjout" path="res://scenes/UI Elements/ui_panel_background.tscn" id="1_g6o8j"]
+[ext_resource type="PackedScene" uid="uid://bnrmv2w2d20vn" path="res://scenes/UI Elements/red_banner.tscn" id="2_jhx0l"]
+[ext_resource type="PackedScene" uid="uid://dbto8uw5u2fst" path="res://scenes/UI Elements/button.tscn" id="3_hi78o"]
+[ext_resource type="FontFile" uid="uid://dvy2g0nn1nf0p" path="res://assets/fonts/FFFFORWA.TTF" id="4_wjyem"]
 
-[node name="UIPanel" type="Control"]
+[node name="IntroUIPanel" type="Control"]
 layout_mode = 3
 anchor_right = 0.475
 anchor_bottom = 0.38
@@ -15,13 +15,13 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_vertical_guides_ = [494.0]
 
-[node name="UIPanelBackground" parent="." instance=ExtResource("1_pqakr")]
+[node name="UIPanelBackground" parent="." instance=ExtResource("1_g6o8j")]
 layout_mode = 0
 offset_right = 247.0
 offset_bottom = 112.0
 scale = Vector2(4, 4)
 
-[node name="RedBanner" parent="." instance=ExtResource("2_xd8ra")]
+[node name="RedBanner" parent="." instance=ExtResource("2_jhx0l")]
 layout_mode = 0
 offset_left = 39.0
 offset_top = -69.0
@@ -43,7 +43,7 @@ grow_vertical = 2
 scale = Vector2(0.36, 0.6)
 theme_override_font_sizes/font_size = 40
 
-[node name="Button" parent="." instance=ExtResource("3_qu7jp")]
+[node name="Button" parent="." instance=ExtResource("3_hi78o")]
 layout_mode = 0
 offset_left = 383.0
 offset_top = 388.0
@@ -60,7 +60,7 @@ offset_top = 87.0
 offset_right = -63.0
 offset_bottom = -244.0
 theme_override_colors/font_color = Color(0.542441, 0.397859, 0.238427, 1)
-theme_override_fonts/font = ExtResource("4_1acf6")
+theme_override_fonts/font = ExtResource("4_wjyem")
 theme_override_font_sizes/font_size = 25
 text = "Welcome to Calm before the storm. Your goal is to
 catch enough fish and dock before the storm arrives.
@@ -76,7 +76,7 @@ offset_top = 320.0
 offset_right = 575.0
 offset_bottom = 356.0
 theme_override_colors/font_color = Color(0.541176, 0.396078, 0.239216, 1)
-theme_override_fonts/font = ExtResource("4_1acf6")
+theme_override_fonts/font = ExtResource("4_wjyem")
 theme_override_font_sizes/font_size = 25
 text = "Good luck!"
 
