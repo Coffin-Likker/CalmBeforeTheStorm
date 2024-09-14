@@ -43,7 +43,7 @@ grow_vertical = 2
 scale = Vector2(0.36, 0.6)
 theme_override_font_sizes/font_size = 40
 
-[node name="Button" parent="." instance=ExtResource("3_hi78o")]
+[node name="StartButton" parent="." instance=ExtResource("3_hi78o")]
 layout_mode = 0
 offset_left = 383.0
 offset_top = 388.0
@@ -81,4 +81,4 @@ theme_override_font_sizes/font_size = 25
 text = "Good luck!"
 
 [editable path="RedBanner"]
-[editable path="Button"]
+[editable path="StartButton"]

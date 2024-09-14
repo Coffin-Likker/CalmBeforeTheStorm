@@ -3,6 +3,7 @@ extends Node
 @onready var level_generator = $'../LevelGenerator'
 @onready var death_cloud = $'../DeathCloud'
 @onready var warning_panel = $'../HUD/WarningPanel'
+@onready var HUD = $'../HUD'
 var direction
 
 func _ready():
@@ -11,11 +12,12 @@ func _ready():
 	level_generator.connect("level_generated", Callable(self, "_on_level_generated"))
 	level_generator.connect("fish_spawned", Callable(self, "_on_fish_spawned"))
 	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
-	start_game()
-	pick_direction()
+
 
 func start_game():
 	level_generator.generate_level()
+	HUD.show()
+	pick_direction()
 
 func _on_level_generated():
 	connect_objects()
