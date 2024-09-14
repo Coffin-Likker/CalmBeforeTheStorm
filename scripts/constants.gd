@@ -14,7 +14,7 @@ var timer_running: bool = false
 # Level generation variables
 var map_size: Vector2 = Vector2(1153, 646)
 var min_distance_between_objects: float = 100.0
-var total_fish_on_screen: int = 4  # Adjust this number as needed
+var total_fish_on_screen: int = 7  # Adjust this number as needed
 var special_fish_spawn_chance: float = 0.25  # 1/5 chance
 var num_safezones: int = 4
 const BORDER_BUFFER = 50  # Buffer zone from map edges
