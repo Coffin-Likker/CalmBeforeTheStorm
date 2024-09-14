@@ -19,6 +19,7 @@ var special_fish_spawn_chance: float = 0.2  # 1/5 chance
 var num_safezones: int = 3
 const BORDER_BUFFER = 50  # Buffer zone from map edges
 const CENTER_SAFE_RADIUS = 50  # Radius of safe zone in the center
+const NUM_MINES = 5  # Adjust this number as needed
 
 # Player movement variables
 var player_max_speed: float = 200.0
@@ -36,7 +37,7 @@ var level_generator: Node
 var fish_scene= load("res://scenes/fish.tscn")
 var special_fish_scene= load("res://scenes/special_fish.tscn")
 var safezone_scene = load("res://scenes/safezone.tscn")
-
+var mine_scene = load("res://scenes/mine.tscn")
 
 # Game over conditions 
 var required_score: int = 20

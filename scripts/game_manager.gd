@@ -11,6 +11,7 @@ func _ready():
 	Constants.timer_label = $"../HUD/TimeLabel"
 	level_generator.connect("level_generated", Callable(self, "_on_level_generated"))
 	level_generator.connect("fish_spawned", Callable(self, "_on_fish_spawned"))
+	level_generator.connect("mine_spawned", Callable(self, "_on_mine_spawned"))
 	death_cloud.connect("cloud_hit_player", Callable(self, "_on_cloud_hit_player"))
 
 
@@ -18,6 +19,7 @@ func start_game():
 	level_generator.generate_level()
 	HUD.show()
 	pick_direction()
+
 
 func _on_level_generated():
 	connect_objects()
@@ -33,9 +35,21 @@ func connect_objects():
 		if not safezone.is_connected("safezone_entered", Callable(self, "_on_safezone_entered")):
 			safezone.connect("safezone_entered", Callable(self, "_on_safezone_entered"))
 
+	for mine in get_tree().get_nodes_in_group("mine"):
+		if not mine.is_connected("mine_hit", Callable(self, "_on_mine_hit")):
+			mine.connect("mine_hit", Callable(self, "_on_mine_hit"))
+
+func _on_mine_hit():
+	_game_over("Hit a mine!")
+
 func _on_fish_spawned(fish_instance):
 	if not fish_instance.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
 		fish_instance.connect("fish_entered", Callable(self, "_on_fish_entered"))
+		
+# Add this function to connect mine signals
+func _on_mine_spawned(mine_instance):
+	if not mine_instance.is_connected("mine_hit", Callable(self, "_on_mine_hit")):
+		mine_instance.connect("mine_hit", Callable(self, "_on_mine_hit"))
 
 func start_timer():
 	Constants.timer_running = true

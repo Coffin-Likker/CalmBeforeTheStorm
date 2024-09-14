@@ -2,6 +2,7 @@ extends Node2D
 
 signal level_generated 
 signal fish_spawned(fish_instance)
+signal mine_spawned(mine_instance)
 
 var occupied_positions = []
 
@@ -22,6 +23,12 @@ func generate_level():
 	
 	for i in range(Constants.total_fish_on_screen):
 		spawn_random_fish()
+		
+		# Generate mines
+	for i in range(Constants.NUM_MINES):
+		var position = get_random_position()
+		spawn_mine(position)
+		occupied_positions.append(position)
 
 	print("Level generation complete")
 	emit_signal("level_generated")
@@ -59,6 +66,15 @@ func spawn_random_fish():
 		spawn_fish(position)
 	
 	occupied_positions.append(position)
+	
+func spawn_mine(position: Vector2):
+	var mine = Constants.mine_scene.instantiate()
+	mine.set_script(load("res://scripts/mine.gd"))
+	mine.position = position
+	mine.add_to_group("mine")
+	add_child(mine)
+	print("Mine spawned at ", position)
+	emit_signal("mine_spawned", mine)
 
 func spawn_fish(position: Vector2):
 	var fish = Constants.fish_scene.instantiate()
