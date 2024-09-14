@@ -4,6 +4,8 @@ extends Node
 @onready var death_cloud = $'../DeathCloud'
 @onready var warning_panel = $'../HUD/WarningPanel'
 @onready var HUD = $'../HUD'
+@onready var menu_manager = $'../MenuManager'
+@onready var gg_menu = $'../MenuManager/GameOverPanel'
 var direction
 
 func _ready():
@@ -40,7 +42,7 @@ func connect_objects():
 			mine.connect("mine_hit", Callable(self, "_on_mine_hit"))
 
 func _on_mine_hit():
-	_game_over("Hit a mine!")
+	_game_over("You Lost...", "You hit a mine")
 
 func _on_fish_spawned(fish_instance):
 	if not fish_instance.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
@@ -67,9 +69,9 @@ func _on_safezone_entered():
 	if Constants.game_score >= Constants.required_score:
 		Constants.player_in_safezone = true
 		Constants.update_score_display()
-		_game_over("Entered safezone with enough fish!")
+		_game_over("You Won!", "Congratulations!")
 	else:
-		_game_over("Entered safezone without enough fish!")	
+		_game_over("You Lost...", "You didn't catch enough fish.")	
 
 func _on_fish_entered(fish):
 	if fish.is_in_group("special_fish"):
@@ -94,15 +96,19 @@ func _on_timer_timeout():
 	Constants.timer_running = false
 
 func _on_cloud_hit_player():
-	_game_over("Hit by cloud!")
+	_game_over("You Lost...", "The storm caught you.")
 
-func _game_over(reason):
+func _game_over(outcome, reason):
 	Constants.current_state = Constants.GameState.GAME_OVER
 	Constants.timer_running = false
-	if  Constants.game_score >= Constants.required_score and reason != "Hit by cloud!":
-		print("Game Over: " + "you Won")
-	else:
-		print("Game Over: " + reason)
+	menu_manager.outro_panel.show()
+	menu_manager.outro_outcome_label.text = outcome
+	menu_manager.outro_outro_label.text = reason
+	menu_manager.outro_final_label.text = "Final Score: " + str(Constants.game_score) + "/" + str(Constants.required_score)
+	#if  Constants.game_score >= Constants.required_score and (reason != "Hit by cloud!"):
+		#print("Game Over: " + "you Won")
+	#else:
+		#print("Game Over: " + reason)
 
 
 func reset_game():

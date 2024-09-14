@@ -6,7 +6,7 @@
 radius = 8.32788
 
 [node name="Safezone" type="Area2D"]
-scale = Vector2(1.4363, 1.64317)
+scale = Vector2(2.2, 2.517)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.556298, 8)

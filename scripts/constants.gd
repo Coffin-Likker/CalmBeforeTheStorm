@@ -19,7 +19,7 @@ var special_fish_spawn_chance: float = 0.2  # 1/5 chance
 var num_safezones: int = 3
 const BORDER_BUFFER = 50  # Buffer zone from map edges
 const CENTER_SAFE_RADIUS = 50  # Radius of safe zone in the center
-const NUM_MINES = 5  # Adjust this number as needed
+const NUM_MINES = 7  # Adjust this number as needed
 
 # Player movement variables
 var player_max_speed: float = 200.0
@@ -40,7 +40,7 @@ var safezone_scene = load("res://scenes/safezone.tscn")
 var mine_scene = load("res://scenes/mine.tscn")
 
 # Game over conditions 
-var required_score: int = 20
+var required_score: int = 30
 
 func reset_game():
 	game_score = 0
@@ -51,7 +51,7 @@ func reset_game():
 
 func update_score_display():
 	if score_label:
-		score_label.text = "Score: " + str(game_score) + "/25"
+		score_label.text = "Score: " + str(game_score) + "/" + str(required_score)
 
 func update_time_display():
 	if timer_label:

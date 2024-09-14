@@ -44,31 +44,41 @@ scale = Vector2(0.36, 0.6)
 theme_override_font_sizes/font_size = 40
 text = "Game Over"
 
-[node name="Button" parent="." instance=ExtResource("3_vkp82")]
+[node name="RestartButton" parent="." instance=ExtResource("3_vkp82")]
 layout_mode = 0
 offset_left = 383.0
 offset_top = 388.0
 offset_right = 601.0
 offset_bottom = 489.0
 
-[node name="IntroLabel" type="Label" parent="."]
+[node name="OutcomeLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 424.0
+offset_top = 73.0
+offset_right = 565.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.541176, 0.396078, 0.239216, 1)
+theme_override_fonts/font = ExtResource("4_gwaeg")
+theme_override_font_sizes/font_size = 25
+text = "You lost..."
+horizontal_alignment = 1
+
+[node name="OutroLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 345.0
-offset_top = 91.0
+offset_top = 131.0
 offset_right = -344.0
-offset_bottom = -249.0
+offset_bottom = -200.0
 theme_override_colors/font_color = Color(0.542441, 0.397859, 0.238427, 1)
 theme_override_fonts/font = ExtResource("4_gwaeg")
 theme_override_font_sizes/font_size = 25
-text = "You Lost... 
-The storm got
-you."
+text = "The storm got you."
 horizontal_alignment = 1
 
-[node name="GoodLuckLabel" type="Label" parent="."]
+[node name="FinalScoreLabel" type="Label" parent="."]
 layout_mode = 0
 offset_left = 343.0
 offset_top = 317.0
@@ -80,4 +90,4 @@ theme_override_font_sizes/font_size = 25
 text = "Final Score: 30/25"
 
 [editable path="RedBanner"]
-[editable path="Button"]
+[editable path="RestartButton"]

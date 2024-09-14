@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dfiqiv0opj1qf"]
+[gd_scene load_steps=3 format=3 uid="uid://cw7qh40qo85gu"]
 
 [ext_resource type="Texture2D" uid="uid://bidfwpychgl17" path="res://assets/floating_mine.png" id="1_twnyy"]
 
@@ -6,7 +6,7 @@
 radius = 10.0311
 
 [node name="Mine" type="Area2D"]
-scale = Vector2(1.47008, 1.52412)
+scale = Vector2(0.8, 0.83)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-3.55271e-15, -1.69407e-21)
