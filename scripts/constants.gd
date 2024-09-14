@@ -15,8 +15,8 @@ var timer_running: bool = false
 var map_size: Vector2 = Vector2(1153, 646)
 var min_distance_between_objects: float = 100.0
 var total_fish_on_screen: int = 7  # Adjust this number as needed
-var special_fish_spawn_chance: float = 0.25  # 1/5 chance
-var num_safezones: int = 4
+var special_fish_spawn_chance: float = 0.2  # 1/5 chance
+var num_safezones: int = 3
 const BORDER_BUFFER = 50  # Buffer zone from map edges
 const CENTER_SAFE_RADIUS = 50  # Radius of safe zone in the center
 

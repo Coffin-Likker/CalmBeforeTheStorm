@@ -57,7 +57,7 @@ func _on_safezone_entered():
 
 func _on_fish_entered(fish):
 	if fish.is_in_group("special_fish"):
-		Constants.game_score += 3
+		Constants.game_score += 2
 		print("Special fish collected - Score +3")
 	else:
 		Constants.game_score += 1
