@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfiqiv0opj1qf"]
+
+[ext_resource type="Texture2D" uid="uid://bidfwpychgl17" path="res://assets/floating_mine.png" id="1_twnyy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mw51y"]
+radius = 10.0311
+
+[node name="Mine" type="Area2D"]
+scale = Vector2(1.4363, 1.64317)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.55271e-15, -1.69407e-21)
+scale = Vector2(0.15, 0.138)
+texture = ExtResource("1_twnyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.696233, -0.60858)
+scale = Vector2(1.81832, -1.74579)
+shape = SubResource("CircleShape2D_mw51y")

@@ -83,7 +83,7 @@ func _on_cloud_hit_player():
 func _game_over(reason):
 	Constants.current_state = Constants.GameState.GAME_OVER
 	Constants.timer_running = false
-	if  Constants.game_score >= Constants.required_score:
+	if  Constants.game_score >= Constants.required_score and reason != "Hit by cloud!":
 		print("Game Over: " + "you Won")
 	else:
 		print("Game Over: " + reason)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boh062hvvrngq"]
+[gd_scene load_steps=8 format=3 uid="uid://boh062hvvrngq"]
 
 [ext_resource type="PackedScene" uid="uid://dprh0a4mvqopg" path="res://scenes/player.tscn" id="1_pr84w"]
 [ext_resource type="PackedScene" uid="uid://clihwhvb2tpm3" path="res://scenes/game_manager.tscn" id="3_v1ng7"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://8i552631oebw" path="res://scenes/hud.tscn" id="6_lk3ns"]
 [ext_resource type="PackedScene" uid="uid://cy3smoix7ik33" path="res://scenes/death_cloud.tscn" id="6_qxlp8"]
 [ext_resource type="PackedScene" uid="uid://c5b4cn2ymgvpy" path="res://scenes/level_generator.tscn" id="7_5q7pe"]
-[ext_resource type="Script" path="res://scripts/tile_map_layer.gd" id="8_xkmey"]
 
 [node name="Main" type="Node2D"]
 
@@ -54,7 +53,6 @@ position = Vector2(-1316, -53)
 [node name="LevelGenerator" parent="." instance=ExtResource("7_5q7pe")]
 
 [node name="TileMapLayer" parent="LevelGenerator" instance=ExtResource("4_fd3qi")]
-script = ExtResource("8_xkmey")
 
 [editable path="GameManager"]
 [editable path="Player"]
