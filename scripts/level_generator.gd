@@ -88,6 +88,8 @@ func spawn_safezone(position: Vector2):
 
 func clear_level():
 	for child in get_children():
+		if child.name == "TileMapLayer":
+			continue
 		child.queue_free()
 	occupied_positions.clear()
 
