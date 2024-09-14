@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://c74p4nldu8k3o"]
+
+[ext_resource type="PackedScene" uid="uid://bh3dl5lbwjout" path="res://scenes/UI Elements/ui_panel_background.tscn" id="1_pqakr"]
+[ext_resource type="PackedScene" uid="uid://bnrmv2w2d20vn" path="res://scenes/UI Elements/red_banner.tscn" id="2_xd8ra"]
+[ext_resource type="PackedScene" uid="uid://dbto8uw5u2fst" path="res://scenes/UI Elements/button.tscn" id="3_qu7jp"]
+
+[node name="UIPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = [100.0]
+
+[node name="UIPanelBackground" parent="." instance=ExtResource("1_pqakr")]
+layout_mode = 0
+offset_top = 26.0
+offset_right = 200.0
+offset_bottom = 113.0
+
+[node name="RedBanner" parent="." instance=ExtResource("2_xd8ra")]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 80.0
+
+[node name="Button" parent="." instance=ExtResource("3_qu7jp")]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 101.0
+offset_right = 136.0
+offset_bottom = 133.0

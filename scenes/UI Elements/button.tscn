@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbto8uw5u2fst"]
+
+[ext_resource type="PackedScene" uid="uid://bf448fjftxu6n" path="res://scenes/UI Elements/button_background.tscn" id="1_rgy33"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4j4vk"]
+
+[node name="Button" type="Button"]
+offset_right = 71.0
+offset_bottom = 32.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4j4vk")
+
+[node name="ButtonBackground" parent="." instance=ExtResource("1_rgy33")]
+layout_mode = 0
