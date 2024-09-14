@@ -1,10 +1,25 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnrmv2w2d20vn"]
+[gd_scene load_steps=3 format=3 uid="uid://bnrmv2w2d20vn"]
 
 [ext_resource type="Texture2D" uid="uid://c03sm3lo01il8" path="res://assets/tilemaps/large_tiles_tilemap_packed.png" id="1_g0b25"]
+[ext_resource type="FontFile" uid="uid://dvy2g0nn1nf0p" path="res://assets/fonts/FFFFORWA.TTF" id="2_j7s6s"]
 
 [node name="RedBanner" type="NinePatchRect"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 302.0
+offset_bottom = 143.0
 scale = Vector2(3, 1)
 texture = ExtResource("1_g0b25")
 region_rect = Rect2(129, 128, 94, 32)
+
+[node name="BannerLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = 59.0
+offset_right = -64.0
+offset_bottom = -24.0
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_j7s6s")
+theme_override_font_sizes/font_size = 20
+text = "Play Game"

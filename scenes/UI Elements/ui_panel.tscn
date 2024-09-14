@@ -1,33 +1,84 @@
-[gd_scene load_steps=4 format=3 uid="uid://c74p4nldu8k3o"]
+[gd_scene load_steps=5 format=3 uid="uid://c74p4nldu8k3o"]
 
 [ext_resource type="PackedScene" uid="uid://bh3dl5lbwjout" path="res://scenes/UI Elements/ui_panel_background.tscn" id="1_pqakr"]
 [ext_resource type="PackedScene" uid="uid://bnrmv2w2d20vn" path="res://scenes/UI Elements/red_banner.tscn" id="2_xd8ra"]
 [ext_resource type="PackedScene" uid="uid://dbto8uw5u2fst" path="res://scenes/UI Elements/button.tscn" id="3_qu7jp"]
+[ext_resource type="FontFile" uid="uid://dvy2g0nn1nf0p" path="res://assets/fonts/FFFFORWA.TTF" id="4_1acf6"]
 
 [node name="UIPanel" type="Control"]
 layout_mode = 3
-anchor_right = 0.096
-anchor_bottom = 0.114
-offset_right = 0.319992
-offset_bottom = -0.380005
+anchor_right = 0.475
+anchor_bottom = 0.38
+offset_right = 0.999939
+offset_bottom = 0.399963
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_vertical_guides_ = [100.0]
+metadata/_edit_vertical_guides_ = [494.0]
 
 [node name="UIPanelBackground" parent="." instance=ExtResource("1_pqakr")]
 layout_mode = 0
-offset_top = 26.0
-offset_right = 200.0
-offset_bottom = 113.0
+offset_right = 247.0
+offset_bottom = 112.0
+scale = Vector2(4, 4)
 
 [node name="RedBanner" parent="." instance=ExtResource("2_xd8ra")]
 layout_mode = 0
-offset_left = 40.0
-offset_right = 80.0
+offset_left = 39.0
+offset_top = -69.0
+offset_right = 343.0
+offset_bottom = 74.0
+
+[node name="BannerLabel" parent="RedBanner" index="0"]
+anchors_preset = -1
+anchor_left = 0.338
+anchor_top = 0.294
+anchor_right = 0.666
+anchor_bottom = 0.702
+offset_left = -0.0760269
+offset_top = 13.958
+offset_right = 175.868
+offset_bottom = 15.614
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.36, 0.6)
+theme_override_font_sizes/font_size = 40
 
 [node name="Button" parent="." instance=ExtResource("3_qu7jp")]
 layout_mode = 0
-offset_left = 65.0
-offset_top = 101.0
-offset_right = 136.0
-offset_bottom = 133.0
+offset_left = 383.0
+offset_top = 388.0
+offset_right = 601.0
+offset_bottom = 489.0
+
+[node name="IntroLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 73.0
+offset_top = 87.0
+offset_right = -63.0
+offset_bottom = -244.0
+theme_override_colors/font_color = Color(0.542441, 0.397859, 0.238427, 1)
+theme_override_fonts/font = ExtResource("4_1acf6")
+theme_override_font_sizes/font_size = 25
+text = "Welcome to Calm before the storm. Your goal is to
+catch enough fish and dock before the storm arrives.
+If you dock before you have enough points you'll lose.
+Turn the ship with the left and right keys. Press up
+and down to switch between speeds.
+"
+
+[node name="GoodLuckLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 412.0
+offset_top = 320.0
+offset_right = 575.0
+offset_bottom = 356.0
+theme_override_colors/font_color = Color(0.541176, 0.396078, 0.239216, 1)
+theme_override_fonts/font = ExtResource("4_1acf6")
+theme_override_font_sizes/font_size = 25
+text = "Good luck!"
+
+[editable path="RedBanner"]
+[editable path="Button"]
