@@ -8,7 +8,7 @@ var player_in_safezone: bool = false
 var current_state: GameState = GameState.PLAYING
 
 # Timer variables
-var time_left: float = 50.0
+var time_left: float = 60.0
 var timer_running: bool = false
 
 # Level generation variables
@@ -19,7 +19,7 @@ var special_fish_spawn_chance: float = 0.2  # 1/5 chance
 var num_safezones: int = 3
 const BORDER_BUFFER = 50  # Buffer zone from map edges
 const CENTER_SAFE_RADIUS = 50  # Radius of safe zone in the center
-const NUM_MINES = 7  # Adjust this number as needed
+const NUM_MINES = 11  # Adjust this number as needed
 
 # Player movement variables
 var player_max_speed: float = 200.0
@@ -46,8 +46,9 @@ func reset_game():
 	game_score = 0
 	player_in_safezone = false
 	current_state = GameState.PLAYING
-	time_left = 10.0
+	time_left = 60.0
 	timer_running = false
+	update_score_display()
 
 func update_score_display():
 	if score_label:

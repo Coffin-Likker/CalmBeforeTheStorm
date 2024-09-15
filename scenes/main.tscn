@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://boh062hvvrngq"]
+[gd_scene load_steps=11 format=3 uid="uid://boh062hvvrngq"]
 
 [ext_resource type="PackedScene" uid="uid://bocmayd43vlk0" path="res://scenes/UI Elements/menu_manager.tscn" id="1_3g3t2"]
 [ext_resource type="PackedScene" uid="uid://dprh0a4mvqopg" path="res://scenes/player.tscn" id="1_pr84w"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://8i552631oebw" path="res://scenes/hud.tscn" id="6_lk3ns"]
 [ext_resource type="PackedScene" uid="uid://cy3smoix7ik33" path="res://scenes/death_cloud.tscn" id="6_qxlp8"]
 [ext_resource type="PackedScene" uid="uid://c5b4cn2ymgvpy" path="res://scenes/level_generator.tscn" id="7_5q7pe"]
+[ext_resource type="AudioStream" uid="uid://uo43pfhvjwgt" path="res://assets/audio/ambience_Mast.wav" id="9_mp0og"]
+[ext_resource type="AudioStream" uid="uid://cvmwmeleamy43" path="res://assets/audio/FishCatch2_fast.wav" id="10_ua15m"]
 
 [node name="Main" type="Node2D"]
 metadata/_edit_vertical_guides_ = [560.0]
@@ -71,10 +73,23 @@ offset_top = 102.0
 offset_right = 67.0
 offset_bottom = 102.4
 
+[node name="OutcomeLabel" parent="MenuManager/GameOverPanel" index="3"]
+offset_left = 414.0
+offset_right = 573.0
+
 [node name="OutroLabel" parent="MenuManager/GameOverPanel" index="4"]
-offset_left = 380.0
-offset_right = 607.0
-offset_bottom = 205.6
+offset_left = 339.0
+offset_top = 130.17
+offset_right = 642.0
+offset_bottom = 335.6
+
+[node name="ThemeSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_mp0og")
+volume_db = -10.0
+
+[node name="PickUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ua15m")
+volume_db = -15.0
 
 [editable path="GameManager"]
 [editable path="Player"]

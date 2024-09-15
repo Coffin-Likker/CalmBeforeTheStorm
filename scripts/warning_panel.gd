@@ -36,7 +36,7 @@ func start_flashing():
 func _flash():
 	flash_count += 1
 	print('flash count: ', flash_count)
-	if flash_count <= max_flashes:
+	if flash_count <= max_flashes && is_flashing == true:
 		self.show()
 		get_tree().create_timer(flash_duration).timeout.connect(_on_flash_visible_timeout)
 	else:

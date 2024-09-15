@@ -23,6 +23,7 @@ Constants="*res://scenes/constants.tscn"
 
 window/size/viewport_width=2080
 window/size/viewport_height=1170
+window/stretch/mode="viewport"
 
 [rendering]
 

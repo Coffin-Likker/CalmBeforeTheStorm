@@ -27,4 +27,5 @@ func _on_start_button_pressed():
 
 func _on_restart_button_pressed():
 	game_manager.reset_game()
+	outro_panel.hide()
 	pass # Replace with function body.

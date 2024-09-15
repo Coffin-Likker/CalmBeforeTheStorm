@@ -6,6 +6,10 @@ extends Node
 @onready var HUD = $'../HUD'
 @onready var menu_manager = $'../MenuManager'
 @onready var gg_menu = $'../MenuManager/GameOverPanel'
+@onready var player = $'../Player'
+@onready var music = $'../ThemeSong'
+@onready var fish_noise = $'../PickUp'
+
 var direction
 
 func _ready():
@@ -19,7 +23,9 @@ func _ready():
 
 func start_game():
 	level_generator.generate_level()
+	music.play(1)
 	HUD.show()
+	Constants.update_score_display()
 	pick_direction()
 
 
@@ -42,7 +48,7 @@ func connect_objects():
 			mine.connect("mine_hit", Callable(self, "_on_mine_hit"))
 
 func _on_mine_hit():
-	_game_over("You Lost...", "You hit a mine")
+	_game_over("You Lost...", "You hit a mine.")
 
 func _on_fish_spawned(fish_instance):
 	if not fish_instance.is_connected("fish_entered", Callable(self, "_on_fish_entered")):
@@ -71,9 +77,11 @@ func _on_safezone_entered():
 		Constants.update_score_display()
 		_game_over("You Won!", "Congratulations!")
 	else:
-		_game_over("You Lost...", "You didn't catch enough fish.")	
+		_game_over("You Lost...", "You didn't catch 
+		enough fish.")	
 
 func _on_fish_entered(fish):
+	fish_noise.play(0)
 	if fish.is_in_group("special_fish"):
 		Constants.game_score += 2
 		print("Special fish collected - Score +3")
@@ -96,15 +104,17 @@ func _on_timer_timeout():
 	Constants.timer_running = false
 
 func _on_cloud_hit_player():
-	_game_over("You Lost...", "The storm caught you.")
+	_game_over("You Lost...", "The storm caught 
+	you.")
 
 func _game_over(outcome, reason):
-	Constants.current_state = Constants.GameState.GAME_OVER
-	Constants.timer_running = false
-	menu_manager.outro_panel.show()
-	menu_manager.outro_outcome_label.text = outcome
-	menu_manager.outro_outro_label.text = reason
-	menu_manager.outro_final_label.text = "Final Score: " + str(Constants.game_score) + "/" + str(Constants.required_score)
+	if Constants.current_state != Constants.GameState.GAME_OVER:
+		Constants.current_state = Constants.GameState.GAME_OVER
+		Constants.timer_running = false
+		menu_manager.outro_panel.show()
+		menu_manager.outro_outcome_label.text = outcome
+		menu_manager.outro_outro_label.text = reason
+		menu_manager.outro_final_label.text = "Final Score: " + str(Constants.game_score) + "/" + str(Constants.required_score)
 	#if  Constants.game_score >= Constants.required_score and (reason != "Hit by cloud!"):
 		#print("Game Over: " + "you Won")
 	#else:
@@ -113,6 +123,10 @@ func _game_over(outcome, reason):
 
 func reset_game():
 	Constants.reset_game()
+	death_cloud.set_position(Vector2(-1316, -53))
+	player.current_speed = 0
+	player.target_speed = 0
+	warning_panel.is_flashing = false
 	start_game()
 
 func pick_direction():
